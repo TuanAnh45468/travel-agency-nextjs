@@ -1,18 +1,41 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    colors: {
+      "mint-green": "#8DD3BB",
+      "blackish-green": "#112211",
+      slamon: "#FF8682",
+      black: "#000000",
+      white: "#fff",
+    },
+
+    screens: {
+      desktop: "1440px",
+    },
+
     extend: {
+      fontFamily: {
+        montserrat: ["var(--font-montserrat)"],
+        gothic: ["var(--font-gothic)"],
+      },
+      fontWeight: {
+        regular: 400,
+        medium: 500,
+        "semi-bold": 600,
+        bold: 700,
+      },
+
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
     },
   },
   plugins: [],
-}
+};
