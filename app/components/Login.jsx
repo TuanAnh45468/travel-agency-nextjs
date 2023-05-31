@@ -36,7 +36,7 @@ export const Login = () => {
               id={"password"}
               type={showPassword ? "text" : "password"}
               className={
-                "w-[512px] h-[56px] px-4 border border-gray rounded-sm form__field"
+                "w-[512px] h-[56px] px-4 rounded-sm form__field"
               }
               placeholder={"Your Password"}
             />
