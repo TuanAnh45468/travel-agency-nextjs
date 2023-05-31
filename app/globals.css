@@ -17,12 +17,12 @@
 }
 
 @layer base {
-  body{
-    @apply bg-white text-blackish-green text-sm
+  body {
+    @apply bg-white text-blackish-green text-sm;
   }
 }
 
-@layer components{
+@layer components {
   .form__group {
     position: relative;
     padding: 15px 0 0;
@@ -38,7 +38,7 @@
     background: transparent;
     transition: border-color 0.2s;
   }
-  .form__label{
+  .form__label {
     top: 0;
     left: 16px;
     transform: translateY(50%);
@@ -67,9 +67,7 @@
     color: #009788;
   }
   .form__field:focus {
-    padding-bottom:6px;
-    border-bottom:2px solid #009788;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #009788;
   }
-
 }
-

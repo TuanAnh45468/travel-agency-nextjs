@@ -21,38 +21,41 @@ export const Login = () => {
         <div className={"flex flex-col gap-y-6"}>
           <div className={"form__group"}>
             <input
-                type={"email"}
-                id={"email"}
-                className={"form__field px-4 rounded-sm"}
-                placeholder="Your Email"
+              type={"email"}
+              id={"email"}
+              className={"form__field px-4 rounded-sm"}
+              placeholder="Your Email"
             />
-            <label htmlFor={"email"} className={"form__label"}>Email</label>
+            <label htmlFor={"email"} className={"form__label"}>
+              Email
+            </label>
           </div>
 
           <div className={"form__group"}>
             <input
-                id={"password"}
-                type={showPassword ? "text" : "password"}
-                className={
-                  "w-[512px] h-[56px] px-4 border border-gray rounded-sm form__field"
-                }
-                placeholder={"Your password"}
+              id={"password"}
+              type={showPassword ? "text" : "password"}
+              className={
+                "w-[512px] h-[56px] px-4 border border-gray rounded-sm form__field"
+              }
+              placeholder={"Your Password"}
             />
 
             <Image
-                src={"./images/icons/trailing-icon.svg"}
-                alt={"visible"}
-                className={
-                  "absolute top-[50%] right-4 transform -translate-y-[10%]"
-                }
-                width={24}
-                height={24}
-                onClick={() => setShowPassword(!showPassword)}
+              src={"./images/icons/trailing-icon.svg"}
+              alt={"visible"}
+              className={
+                "absolute top-[50%] right-4 transform -translate-y-[35%]"
+              }
+              width={48}
+              height={48}
+              onClick={() => setShowPassword(!showPassword)}
             ></Image>
 
-            <label htmlFor={"password"} className={"form__label"}>Password</label>
+            <label htmlFor={"password"} className={"form__label !w-[70px]"}>
+              Password
+            </label>
           </div>
-
 
           <div className={"flex"}>
             <label
