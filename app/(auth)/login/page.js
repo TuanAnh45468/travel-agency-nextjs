@@ -4,7 +4,7 @@ import { ImageSlider } from "@/app/components/ImageSlider";
 
 export default function Page() {
   return (
-    <div className={"grid grid-cols-2 my-[104px] mx-[104px]"}>
+    <div className={"desktop:grid desktop:grid-cols-2 my-[104px] desktop:mx-[104px]"}>
       <div>
         <Image
           src={"./images/logo.svg"}
@@ -16,11 +16,14 @@ export default function Page() {
         <Login></Login>
       </div>
 
-      <ImageSlider
-        width={"w-[516px]"}
-        height={"h-[716px]"}
-        className={"col-start-2 col-span-1"}
-      ></ImageSlider>
+        <div className={"max-desktop:hidden"}>
+            <ImageSlider
+                width={"w-[516px]"}
+                height={"h-[716px]"}
+                className={"col-start-2 col-span-1"}
+            ></ImageSlider>
+        </div>
+
     </div>
   );
 }

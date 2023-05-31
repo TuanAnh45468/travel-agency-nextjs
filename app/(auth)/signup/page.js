@@ -4,8 +4,11 @@ import { ImageSlider } from "@/app/components/ImageSlider";
 
 export default function Page() {
   return (
-    <div className={"grid grid-cols-2 gap-x-[104px] mt-[104px] justify-center mx-[80px]"}>
-      <ImageSlider width={"w-[488px]"} height={"h-[816px]"}></ImageSlider>
+    <div className={"desktop:grid desktop:grid-cols-2 desktop:gap-x-[104px] mt-[104px] desktop:justify-center desktop:mx-[80px]"}>
+        <div className={"max-desktop:hidden"}>
+            <ImageSlider width={"w-[488px]"} height={"h-[816px]"}></ImageSlider>
+        </div>
+
 
       <div>
         <Image

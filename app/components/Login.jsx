@@ -66,7 +66,7 @@ export const Login = () => {
               <span>Remember me</span>
             </label>
             <Link
-              href={"/forgotPassword-password"}
+              href={"/forgotPassword"}
               className={"ml-auto text-slamon"}
             >
               Forgot Password
