@@ -59,7 +59,7 @@ export const Signup = () => {
               className={"form__field px-4 rounded-sm w-[308px] h-[56px]"}
               placeholder="Your Phone"
             />
-            <label htmlFor={"phone"} className={"form__label !w-[90px]"}>
+            <label htmlFor={"phone"} className={"form__label !w-[100px]"}>
               Phone Number
             </label>
           </div>
