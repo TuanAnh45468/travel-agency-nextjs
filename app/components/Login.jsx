@@ -19,41 +19,40 @@ export const Login = () => {
 
       <form className={"flex flex-col gap-y-[40px]"}>
         <div className={"flex flex-col gap-y-6"}>
-          <label htmlFor={"email"}>
-            Email
+          <div className={"form__group"}>
             <input
-              id={"email"}
-              type={"text"}
-              className={
-                "w-[512px] h-[56px] px-4 border border-gray rounded-sm"
-              }
-              placeholder={"example@email.com"}
+                type={"email"}
+                id={"email"}
+                className={"form__field px-4 rounded-sm"}
+                placeholder="Your Email"
             />
-          </label>
+            <label htmlFor={"email"} className={"form__label"}>Email</label>
+          </div>
 
-          <label htmlFor={"password"}>
-            <span>Password</span>
-            <div className={"w-[512px] h-[56px] relative"}>
-              <input
+          <div className={"form__group"}>
+            <input
                 id={"password"}
                 type={showPassword ? "text" : "password"}
                 className={
-                  "w-[512px] h-[56px] px-4 border border-gray rounded-sm"
+                  "w-[512px] h-[56px] px-4 border border-gray rounded-sm form__field"
                 }
                 placeholder={"Your password"}
-              />
-              <Image
+            />
+
+            <Image
                 src={"./images/icons/trailing-icon.svg"}
                 alt={"visible"}
                 className={
-                  "absolute top-[50%] right-4 transform -translate-y-1/2"
+                  "absolute top-[50%] right-4 transform -translate-y-[10%]"
                 }
                 width={24}
                 height={24}
                 onClick={() => setShowPassword(!showPassword)}
-              ></Image>
-            </div>
-          </label>
+            ></Image>
+
+            <label htmlFor={"password"} className={"form__label"}>Password</label>
+          </div>
+
 
           <div className={"flex"}>
             <label
