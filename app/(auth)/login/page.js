@@ -17,8 +17,8 @@ export default function Page() {
       </div>
 
       <ImageSlider
-        width={"w-[616px]"}
-        height={"h-[816px]"}
+        width={"w-[516px]"}
+        height={"h-[716px]"}
         className={"col-start-2 col-span-1"}
       ></ImageSlider>
     </div>

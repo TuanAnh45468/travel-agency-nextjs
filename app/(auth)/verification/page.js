@@ -14,6 +14,6 @@ export default function Page(){
             ></Image>
             <Verification></Verification>
         </div>
-    <ImageSlider width={"w-[616px]"} height={"h-[816px]"}></ImageSlider>
+    <ImageSlider width={"w-[416px]"} height={"h-[616px]"}></ImageSlider>
     </div>
 }
