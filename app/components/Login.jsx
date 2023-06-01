@@ -3,11 +3,33 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/app/components/Button";
 import { SocialAuthButtons } from "@/app/components/SocialAuthButtons";
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import { useRouter } from "next/navigation";
+
+const { login } = require("@lib/api");
 
 export const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const initial = { email: "", password: "" };
+  const [formState, setFormState] = useState({ ...initial });
+  const [isError, setIsError] = useState(false);
+  const router = useRouter();
 
+  const handleSubmit = useCallback(
+    async (e) => {
+      e.preventDefault();
+
+      try {
+        await login(formState);
+        router.replace("/");
+      } catch (e) {
+        throw new Error("Invalid Login");
+      } finally {
+        setFormState({ ...initial });
+      }
+    },
+    [formState.email, formState.password]
+  );
   return (
     <div className={"flex flex-col gap-y-[48px] w-[512px] h-[593px]"}>
       <div className={"flex flex-col gap-y-4"}>
@@ -17,12 +39,19 @@ export const Login = () => {
         </p>
       </div>
 
-      <form className={"flex flex-col gap-y-[40px]"}>
+      <form className={"flex flex-col gap-y-[40px]"} onSubmit={handleSubmit}>
         <div className={"flex flex-col gap-y-6"}>
           <div className={"form__group"}>
             <input
               type={"email"}
               id={"email"}
+              value={formState.email}
+              onChange={(event) => {
+                setFormState((prevState) => ({
+                  ...prevState,
+                  email: event.target.value,
+                }));
+              }}
               className={"form__field px-4 rounded-sm"}
               placeholder="Your Email"
             />
@@ -34,10 +63,15 @@ export const Login = () => {
           <div className={"form__group"}>
             <input
               id={"password"}
+              value={formState.password}
+              onChange={(event) => {
+                setFormState((prevState) => ({
+                  ...prevState,
+                  password: event.target.value,
+                }));
+              }}
               type={showPassword ? "text" : "password"}
-              className={
-                "w-[512px] h-[56px] px-4 rounded-sm form__field"
-              }
+              className={"w-[512px] h-[56px] px-4 rounded-sm form__field"}
               placeholder={"Your Password"}
             />
 
@@ -57,6 +91,14 @@ export const Login = () => {
             </label>
           </div>
 
+          {isError && (
+            <div className="toast toast-top toast-end">
+              <div className="alert alert-error">
+                <span>Email or password invalid.</span>
+              </div>
+            </div>
+          )}
+
           <div className={"flex"}>
             <label
               htmlFor={"rememberMe"}
@@ -65,10 +107,7 @@ export const Login = () => {
               <input id={"rememberMe"} type={"checkbox"} />
               <span>Remember me</span>
             </label>
-            <Link
-              href={"/forgotPassword"}
-              className={"ml-auto text-slamon"}
-            >
+            <Link href={"/forgotPassword"} className={"ml-auto text-slamon"}>
               Forgot Password
             </Link>
           </div>

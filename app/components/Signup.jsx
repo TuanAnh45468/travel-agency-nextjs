@@ -36,6 +36,7 @@ export const Signup = () => {
 
       try {
         await register(formState);
+        router.replace("/");
       } catch (e) {
         setError("Could not register");
       } finally {
