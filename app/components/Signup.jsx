@@ -3,11 +3,54 @@ import { SocialAuthButtons } from "@/app/components/SocialAuthButtons";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/app/components/Button";
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import { useRouter } from "next/navigation";
+import { register } from "@lib/api";
 
 export const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState(false);
+  const [validatePassword, setValidatePassword] = useState("");
+  const [passwordMismatch, setPasswordMismatch] = useState(false);
+  const [error, setError] = useState("");
+  const initial = {
+    email: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
+  };
+  const [formState, setFormState] = useState({ ...initial });
+  const router = useRouter();
+
+  const handleSubmit = useCallback(
+    async (e) => {
+      e.preventDefault();
+
+      if (validatePassword !== formState.password) {
+        setPasswordMismatch(true);
+        return;
+      } else {
+        setPasswordMismatch(false);
+      }
+
+      try {
+        await register(formState);
+      } catch (e) {
+        setError("Could not register");
+      } finally {
+        setFormState({ ...initial });
+        setValidatePassword("");
+      }
+    },
+    [
+      formState.email,
+      formState.password,
+      formState.firstName,
+      formState.lastName,
+      formState.phoneNumber,
+    ]
+  );
 
   return (
     <div className={"w-[640px] flex flex-col gap-y-12"}>
@@ -19,13 +62,20 @@ export const Signup = () => {
       </div>
 
       <div className={"flex flex-col gap-y-10"}>
-        <form className={"grid grid-cols-2 gap-y-6"}>
+        <form className={"grid grid-cols-2 gap-y-6"} onSubmit={handleSubmit}>
           <div className={"form__group"}>
             <input
               type={"text"}
               id={"firstName"}
               placeholder={"First Name"}
               className={"form__field px-4 rounded-sm w-[308px] h-[56px]"}
+              onChange={(e) =>
+                setFormState((prevState) => ({
+                  ...prevState,
+                  firstName: e.target.value,
+                }))
+              }
+              value={formState.firstName}
             />
             <label className={"form__label !w-[70px]"}>First Name</label>
           </div>
@@ -36,6 +86,13 @@ export const Signup = () => {
               id={"lastName"}
               placeholder={"Last Name"}
               className={"form__field px-4 rounded-sm w-[308px] h-[56px]"}
+              onChange={(e) => {
+                setFormState((prevState) => ({
+                  ...prevState,
+                  lastName: e.target.value,
+                }));
+              }}
+              value={formState.lastName}
             />
             <label className={"form__label !w-[70px]"}>Last Name</label>
           </div>
@@ -46,6 +103,13 @@ export const Signup = () => {
               id={"email"}
               className={"form__field px-4 rounded-sm w-[308px] h-[56px]"}
               placeholder="Your Email"
+              onChange={(e) => {
+                setFormState((prevState) => ({
+                  ...prevState,
+                  email: e.target.value,
+                }));
+              }}
+              value={formState.email}
             />
             <label htmlFor={"email"} className={"form__label"}>
               Email
@@ -57,6 +121,13 @@ export const Signup = () => {
               type={"tel"}
               id={"phone"}
               className={"form__field px-4 rounded-sm w-[308px] h-[56px]"}
+              onChange={(e) => {
+                setFormState((prevState) => ({
+                  ...prevState,
+                  phoneNumber: e.target.value,
+                }));
+              }}
+              value={formState.phoneNumber}
               placeholder="Your Phone"
             />
             <label htmlFor={"phone"} className={"form__label !w-[100px]"}>
@@ -69,6 +140,13 @@ export const Signup = () => {
               id={"password"}
               type={showPassword ? "text" : "password"}
               className={"w-[640px] h-[56px] px-4 rounded-sm form__field"}
+              onChange={(e) => {
+                setFormState((prevState) => ({
+                  ...prevState,
+                  password: e.target.value,
+                }));
+              }}
+              value={formState.password}
               placeholder={"Your Password"}
             />
 
@@ -93,6 +171,10 @@ export const Signup = () => {
               id={"confirm-password"}
               type={confirmPassword ? "text" : "password"}
               className={"w-[640px] h-[56px] px-4 rounded-sm form__field"}
+              onChange={(e) => {
+                setValidatePassword(e.target.value);
+              }}
+              value={validatePassword}
               placeholder={"Confirm Password"}
             />
 
@@ -114,6 +196,14 @@ export const Signup = () => {
               Confirm Password
             </label>
           </div>
+
+          {passwordMismatch && (
+            <div className="toast toast-top toast-end">
+              <div className="alert alert-error">
+                <span>Passwords do not match. Please try again.</span>
+              </div>
+            </div>
+          )}
 
           <div
             className={"flex items-center gap-x-[8px] col-start-1 col-span-2"}

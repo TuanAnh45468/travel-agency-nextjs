@@ -12,7 +12,7 @@ module.exports = {
       slamon: "#FF8682",
       black: "#000000",
       white: "#fff",
-      gray: "#79747E"
+      gray: "#79747E",
     },
 
     screens: {
@@ -38,5 +38,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 };
