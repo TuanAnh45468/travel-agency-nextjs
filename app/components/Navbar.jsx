@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const Navbar = () => {
   return (
-    <div className="navbar bg-base-100 font-montserrat">
+    <div className="navbar bg-base-100 font-montserrat px-[104px]">
       <div className="navbar-start">
         <Link href={"/flight"}>
           <div className={"btn btn-ghost normal-case text-sm"}>

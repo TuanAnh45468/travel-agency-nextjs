@@ -1,7 +1,9 @@
+import { Hero } from "@/app/components/Hero";
+
 export default function Page() {
   return (
     <section className="">
-      <h1>Hotel page</h1>
+      <Hero page={"hotel"}></Hero>
     </section>
   );
 }

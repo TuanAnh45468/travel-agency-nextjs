@@ -1,7 +1,9 @@
+import { Hero } from "@/app/components/Hero";
+
 export default function Page() {
   return (
     <section className="">
-      <h1>Flight page</h1>
+      <Hero page={"flight"}></Hero>
     </section>
   );
 }
