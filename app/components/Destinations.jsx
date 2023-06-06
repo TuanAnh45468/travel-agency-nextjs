@@ -46,7 +46,7 @@ export const Destinations = () => {
         </div>
         <button
           className={
-            "w-[80px] h-[40px] border border-mint-green self-center ml-auto"
+            "w-[80px] h-[40px] hover:bg-mint-green border border-mint-green self-center ml-auto"
           }
         >
           See All

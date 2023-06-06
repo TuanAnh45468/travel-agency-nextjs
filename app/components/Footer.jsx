@@ -1,8 +1,14 @@
 import Image from "next/image";
+import { CallToAction } from "@/app/components/CallToAction";
 
 export const Footer = () => {
   return (
-    <footer className="footer p-10 text-base-content bg-mint-green mt-[271px]">
+    <footer className="footer p-10 text-base-content bg-mint-green pt-[218px] mt-[271px] h-[422px] relative">
+      <CallToAction
+        className={
+          "absolute left-1/2 transform -translate-x-1/2 top-0 -translate-y-1/2"
+        }
+      ></CallToAction>
       <div>
         <Image
           src={"/images/footer-logo.svg"}

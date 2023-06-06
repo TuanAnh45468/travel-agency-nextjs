@@ -14,7 +14,7 @@ export const ImageGallery = () => {
         </div>
         <button
           className={
-            "w-[80px] h-[40px] border border-mint-green self-center ml-auto"
+            "w-[80px] h-[40px] border hover:bg-mint-green border-mint-green self-center ml-auto"
           }
         >
           See All
