@@ -14,7 +14,7 @@ export const ImageGallery = () => {
         </div>
         <button
           className={
-            "w-[80px] h-[40px] border hover:bg-mint-green border-mint-green self-center ml-auto"
+            "w-[80px] h-[40px] transition duration-200 border hover:bg-mint-green border-mint-green self-center ml-auto"
           }
         >
           See All
@@ -54,7 +54,7 @@ export const ImageGallery = () => {
           </p>
           <button
             className={
-              "w-[504px] h-[48px] mt-auto bg-white font-medium rounded-md mb-6"
+              "w-[504px] h-[48px] mt-auto hover:bg-dark-mint-green hover:text-white transition duration-200 bg-white font-medium rounded-md mb-6"
             }
           >
             Book Flight

@@ -22,7 +22,11 @@ export const DestinationCard = ({
             $ {price}
           </span>
         </div>
-        <Button className={"w-[248px] h-[48px] rounded-md"}>
+        <Button
+          className={
+            "w-[248px] h-[48px] hover:bg-dark-mint-green hover:text-white transition duration-200 rounded-md"
+          }
+        >
           {type === "flight" ? "Book Flight" : "Book a Hotel"}
         </Button>
       </div>

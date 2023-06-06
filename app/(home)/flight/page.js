@@ -26,7 +26,7 @@ export default async function Page() {
 
           <button
             className={
-              "w-[80px] h-[40px] border border-mint-green hover:bg-mint-green self-center ml-auto"
+              "w-[80px] h-[40px] transition duration-200 border border-mint-green hover:bg-mint-green self-center ml-auto"
             }
           >
             See All

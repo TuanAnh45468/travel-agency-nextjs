@@ -244,7 +244,7 @@ export const Search = ({ flights }) => {
 
         <Button
           className={
-            "w-[144px] h-[56px] shadow-lg rounded-lg flex items-center justify-center gap-x-1"
+            "w-[144px] h-[56px] hover:bg-light-mint-green transition duration-200 shadow-lg rounded-lg flex items-center justify-center gap-x-1"
           }
         >
           <Image
