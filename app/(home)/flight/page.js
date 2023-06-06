@@ -3,12 +3,13 @@ import { Search } from "@/app/components/Search";
 import { getFlights } from "@lib/api";
 import Image from "next/image";
 import { Destinations } from "@/app/components/Destinations";
+import { ImageGallery } from "@/app/components/ImageGallery";
 
 export default async function Page() {
   const flights = await getFlights();
 
   return (
-    <section className="">
+    <section className="flex flex-col items-center">
       <Hero page={"flight"}></Hero>
       <Search flights={flights}></Search>
       <div className={"mt-[80px] flex flex-col gap-y-6"}>
@@ -41,6 +42,7 @@ export default async function Page() {
       </div>
 
       <Destinations></Destinations>
+      <ImageGallery></ImageGallery>
     </section>
   );
 }

@@ -23,7 +23,7 @@ export const DestinationCard = ({
           </span>
         </div>
         <Button className={"w-[248px] h-[48px] rounded-md"}>
-          {type === "flight" ? "Book Flight" : "Book Hotel"}
+          {type === "flight" ? "Book Flight" : "Book a Hotel"}
         </Button>
       </div>
     </div>
