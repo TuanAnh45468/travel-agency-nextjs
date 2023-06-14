@@ -1,7 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import { SignoutBtn } from "@/app/components/SignoutBtn";
 
-export const Navbar = () => {
+export const Navbar = async () => {
+  const session = await getServerSession(authOptions);
+
   return (
     <div className="navbar bg-base-100 font-montserrat px-[104px]">
       <div className="navbar-start">
@@ -38,15 +43,7 @@ export const Navbar = () => {
         ></Image>
       </div>
       <div className="navbar-end">
-        <Link href={"/login"} className={"btn mr-4"}>
-          Login
-        </Link>
-        <Link
-          href={"/signup"}
-          className={"btn bg-blackish-green text-white hover:bg-gray"}
-        >
-          Sign up
-        </Link>
+        <SignoutBtn></SignoutBtn>
       </div>
     </div>
   );
