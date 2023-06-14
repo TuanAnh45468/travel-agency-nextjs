@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Gothic_A1, Montserrat } from "next/font/google";
+import { NextAuthProvider } from "@/app/providers";
 
 const gothic = Gothic_A1({
   subsets: ["latin"],
@@ -21,7 +22,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={montserrat.className}>{children}</body>
+      <body className={montserrat.className}>
+        <NextAuthProvider>{children}</NextAuthProvider>
+      </body>
     </html>
   );
 }

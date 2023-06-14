@@ -1,16 +1,12 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@/app/components/Button";
 import { SocialAuthButtons } from "@/app/components/SocialAuthButtons";
 import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
-
-const { login } = require("@lib/api");
+import { signIn } from "next-auth/react";
 
 export const Login = () => {
-  const [showPassword, setShowPassword] = useState(false);
-  const initial = { email: "", password: "" };
+  const initial = { email: "" };
   const [formState, setFormState] = useState({ ...initial });
   const [isError, setIsError] = useState(false);
   const router = useRouter();
@@ -20,15 +16,19 @@ export const Login = () => {
       e.preventDefault();
 
       try {
-        await login(formState);
-        router.replace("/");
-      } catch (e) {
-        throw new Error("Invalid Login");
+        const email = formState.email;
+        const { error } = await signIn("email", {
+          email,
+          redirect: true,
+          callbackUrl: "/flight",
+        });
+      } catch (error) {
+        throw new Error("Invalid Login: ", error);
       } finally {
         setFormState({ ...initial });
       }
     },
-    [formState.email, formState.password]
+    [formState.email]
   );
   return (
     <div className={"flex flex-col gap-y-[48px] w-[512px] h-[593px]"}>
@@ -60,37 +60,6 @@ export const Login = () => {
             </label>
           </div>
 
-          <div className={"form__group"}>
-            <input
-              id={"password"}
-              value={formState.password}
-              onChange={(event) => {
-                setFormState((prevState) => ({
-                  ...prevState,
-                  password: event.target.value,
-                }));
-              }}
-              type={showPassword ? "text" : "password"}
-              className={"w-[512px] h-[56px] px-4 rounded-sm form__field"}
-              placeholder={"Your Password"}
-            />
-
-            <Image
-              src={"./images/icons/trailing-icon.svg"}
-              alt={"visible"}
-              className={
-                "absolute top-[50%] right-4 transform -translate-y-[35%]"
-              }
-              width={48}
-              height={48}
-              onClick={() => setShowPassword(!showPassword)}
-            ></Image>
-
-            <label htmlFor={"password"} className={"form__label !w-[70px]"}>
-              Password
-            </label>
-          </div>
-
           {isError && (
             <div className="toast toast-top toast-end">
               <div className="alert alert-error">
@@ -114,7 +83,13 @@ export const Login = () => {
         </div>
 
         <div className={"flex flex-col gap-y-[16px]"}>
-          <Button className={"w-[512px] h-[48px] rounded-lg"}>Login</Button>
+          <button
+            className={
+              "w-[512px] h-[48px] rounded-lg bg-mint-green text-blackish-green font-semi-bold"
+            }
+          >
+            Login
+          </button>
           <Link href={"/signup"} className={"font-medium self-center"}>
             Don&rsquo;t have an account?{" "}
             <span className={"text-slamon text-sm"}>Sign up</span>
