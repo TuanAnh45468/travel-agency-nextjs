@@ -2,14 +2,14 @@ const { NextResponse } = require("next/server");
 const { jwtVerify } = require("jose");
 const PUBLIC_FILE = /\.(.*)$/;
 
-const verifyJWT = async (jwt) => {
-  const { payload } = await jwtVerify(
-    jwt,
-    new TextEncoder().encode(process.env.JWT_SECRET)
-  );
-
-  return payload;
-};
+// const verifyJWT = async (jwt) => {
+//   const { payload } = await jwtVerify(
+//     jwt,
+//     new TextEncoder().encode(process.env.JWT_SECRET)
+//   );
+//
+//   return payload;
+// };
 
 export default async function middleware(req, res) {
   const { pathname } = req.nextUrl;
@@ -24,19 +24,19 @@ export default async function middleware(req, res) {
     return NextResponse.next();
   }
 
-  const jwt = req.cookies.get(process.env.COOKIE_NAME);
-
-  if (!jwt) {
-    req.nextUrl.pathname = "/login";
-    return NextResponse.redirect(req.nextUrl);
-  }
-
-  try {
-    await verifyJWT(jwt.value);
-    return NextResponse.next();
-  } catch (e) {
-    console.error(e);
-    req.nextUrl.pathname = "/login";
-    return NextResponse.redirect(req.nextUrl);
-  }
+  // const jwt = req.cookies.get(process.env.COOKIE_NAME);
+  //
+  // if (!jwt) {
+  //   req.nextUrl.pathname = "/login";
+  //   return NextResponse.redirect(req.nextUrl);
+  // }
+  //
+  // try {
+  //   await verifyJWT(jwt.value);
+  //   return NextResponse.next();
+  // } catch (e) {
+  //   console.error(e);
+  //   req.nextUrl.pathname = "/login";
+  //   return NextResponse.redirect(req.nextUrl);
+  // }
 }

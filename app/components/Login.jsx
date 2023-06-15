@@ -101,8 +101,8 @@ export const Login = () => {
           <span className={"block text-gray"}>Or login with</span>
           <div className={"w-[194px] h-[0.5px] bg-gray ml-auto"}></div>
         </div>
-        <SocialAuthButtons className={"w-[160px] h-[56px]"}></SocialAuthButtons>
       </form>
+      <SocialAuthButtons className={"w-[160px] h-[56px]"}></SocialAuthButtons>
     </div>
   );
 };
