@@ -3,6 +3,7 @@ import { useSearchParams } from "next/navigation";
 import { FlightCard } from "@/app/components/FlightCard";
 import { useEffect, useState } from "react";
 import { getFlightByParams } from "@lib/api";
+import { SidebarSearch } from "@/app/components/SidebarSearch";
 
 export default function Page() {
   const searchParams = useSearchParams();
@@ -31,9 +32,9 @@ export default function Page() {
   }, [searchParams]);
 
   return (
-    <div class={"flex w-full items-center justify-center"}>
+    <div class={"flex w-full justify-center  gap-x-6"}>
       {!searchData && <h1 class={"font-bold text-6xl"}>There is no flight.</h1>}
-
+      <SidebarSearch className={"mt-[48px]"}></SidebarSearch>
       <FlightCard searchData={searchData}></FlightCard>
     </div>
   );
