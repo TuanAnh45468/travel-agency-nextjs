@@ -15,22 +15,22 @@ export const FlightCard = ({ searchData }) => {
   }
 
   return (
-    <div class={"flex flex-col mt-[48px]"}>
-      <div class={"flex gap-x-[48px] ml-auto mb-[48px]"}>
+    <div className={"flex flex-col mt-[48px]"}>
+      <div className={"flex gap-x-[48px] ml-auto mb-[48px]"}>
         <div>
-          <span class={"font-medium text-base"}>Cheapest</span>
+          <span className={"font-medium text-base"}>Cheapest</span>
           <br />
-          <span class={"text-gray text-sm"}>$99 .2h 18m</span>
+          <span className={"text-gray text-sm"}>$99 .2h 18m</span>
         </div>
         <div>
-          <span class={"font-medium text-base underline"}>Best</span>
+          <span className={"font-medium text-base underline"}>Best</span>
           <br />
-          <span class={"text-gray text-sm"}>$99 .2h 18m</span>
+          <span className={"text-gray text-sm"}>$99 .2h 18m</span>
         </div>
         <div>
-          <span class={"font-medium text-base"}>Quickest</span>
+          <span className={"font-medium text-base"}>Quickest</span>
           <br />
-          <span class={"text-gray text-sm"}>$99 .2h 18m</span>
+          <span className={"text-gray text-sm"}>$99 .2h 18m</span>
         </div>
         <button className={"flex items-center gap-x-2"}>
           <Image
@@ -43,7 +43,7 @@ export const FlightCard = ({ searchData }) => {
         </button>
       </div>
       {searchData.map((flight) => (
-        <div class={"w-[840px] h-[268.5px] flex"} key={flight.id}>
+        <div className={"w-[840px] h-[268.5px] flex"} key={flight.id}>
           <Image
             src={flight.logo}
             alt={""}
@@ -51,28 +51,28 @@ export const FlightCard = ({ searchData }) => {
             width={160}
             height={110.81}
           ></Image>
-          <div class={"w-full flex flex-col gap-y-4 pl-[24px]"}>
-            <div class={"flex items-center gap-x-2"}>
+          <div className={"w-full flex flex-col gap-y-4 pl-[24px]"}>
+            <div className={"flex items-center gap-x-2"}>
               <span
-                class={
+                className={
                   "w-[40px] h-[32px] font-medium border border-mint-green flex items-center justify-center rounded-md"
                 }
               >
                 {flight.points}
               </span>
               <p>
-                <span class={"font-bold"}>Very Good </span>
+                <span className={"font-bold"}>Very Good </span>
                 <span>{flight.reviews} reviews</span>
               </p>
-              <div class={"ml-auto flex flex-col text-gray"}>
+              <div className={"ml-auto flex flex-col text-gray"}>
                 <span>starting from</span>
-                <span class={"text-slamon font-bold text-2xl"}>$104</span>
+                <span className={"text-slamon font-bold text-2xl"}>$104</span>
               </div>
             </div>
 
             <div>
-              <div class={"flex font-bold gap-x-[40px] items-center"}>
-                <div class={"text-base"}>
+              <div className={"flex font-bold gap-x-[40px] items-center"}>
+                <div className={"text-base"}>
                   <input
                     type="checkbox"
                     checked="checked"
@@ -80,19 +80,19 @@ export const FlightCard = ({ searchData }) => {
                     className="checkbox checkbox-sm rounded-sm mr-3"
                   />
 
-                  <span class={""}>{formatTime(flight.departureTime)}</span>
+                  <span className={""}>{formatTime(flight.departureTime)}</span>
                   <span>-</span>
                   <span> {formatTime(flight.arrivalTime)}</span>
                 </div>
 
-                <span class={"text-sm text-gray"}>non stop</span>
-                <span class={"text-base"}>{flight.totalHours} hours</span>
+                <span className={"text-sm text-gray"}>non stop</span>
+                <span className={"text-base"}>{flight.totalHours} hours</span>
               </div>
             </div>
             <hr />
-            <div class={"flex gap-x-4"}>
+            <div className={"flex gap-x-4"}>
               <div
-                class={
+                className={
                   "w-[48px] h-[48px] border border-mint-green flex items-center justify-center rounded-md"
                 }
               >
@@ -104,9 +104,9 @@ export const FlightCard = ({ searchData }) => {
                 ></Image>
               </div>
               <Link
-                href={"#"}
+                href={`/list-flights/${flight.id}`}
                 className={
-                  "w-[536px] h-[48px] bg-mint-green text-sm font-bold flex justify-center items-center rounded-md"
+                  "w-[536px] h-[48px] bg-mint-green text-sm hover:bg-dark-mint-green hover:text-white font-bold flex justify-center items-center rounded-md"
                 }
               >
                 View Deals

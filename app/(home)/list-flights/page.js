@@ -32,8 +32,10 @@ export default function Page() {
   }, [searchParams]);
 
   return (
-    <div class={"flex w-full justify-center  gap-x-6"}>
-      {!searchData && <h1 class={"font-bold text-6xl"}>There is no flight.</h1>}
+    <div className={"flex w-full justify-center  gap-x-6"}>
+      {!searchData && (
+        <h1 className={"font-bold text-6xl"}>There is no flight.</h1>
+      )}
       <SidebarSearch className={"mt-[48px]"}></SidebarSearch>
       <FlightCard searchData={searchData}></FlightCard>
     </div>

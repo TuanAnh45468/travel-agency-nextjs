@@ -1,42 +1,42 @@
 export const SidebarSearch = ({ className }) => {
   return (
     <div
-      class={`w-[343px] h-[880px] flex flex-col gap-y-[32px] border border-gray border-y-0 border-l-0 ${className}`}
+      className={`w-[343px] h-[880px] flex flex-col gap-y-[32px] border border-gray border-y-0 border-l-0 ${className}`}
     >
-      <h2 class={"font-bold text-[20px]"}>Filters</h2>
+      <h2 className={"font-bold text-[20px]"}>Filters</h2>
       <div>
-        <span class={"font-semi-bold text-base"}>Rating</span>
-        <div class={"flex gap-x-4"}>
+        <span className={"font-semi-bold text-base"}>Rating</span>
+        <div className={"flex gap-x-4"}>
           <div
-            class={
+            className={
               "w-[40px] h-[32px] border hover:bg-mint-green border-mint-green flex items-center justify-center"
             }
           >
             0+
           </div>
           <div
-            class={
+            className={
               "w-[40px] h-[32px] border border-mint-green hover:bg-mint-green flex items-center justify-center"
             }
           >
             1+
           </div>
           <div
-            class={
+            className={
               "w-[40px] h-[32px] border border-mint-green hover:bg-mint-green flex items-center justify-center"
             }
           >
             2+
           </div>
           <div
-            class={
+            className={
               "w-[40px] h-[32px] border border-mint-green hover:bg-mint-green flex items-center justify-center"
             }
           >
             3+
           </div>
           <div
-            class={
+            className={
               "w-[40px] h-[32px] border border-mint-green hover:bg-mint-green flex items-center justify-center"
             }
           >
@@ -44,9 +44,9 @@ export const SidebarSearch = ({ className }) => {
           </div>
         </div>
       </div>
-      <div class={"flex flex-col gap-y-4"}>
-        <span class={"font-semi-bold text-base"}>Airlines</span>
-        <div class={"flex flex-col gap-y-2"}>
+      <div className={"flex flex-col gap-y-4"}>
+        <span className={"font-semi-bold text-base"}>Airlines</span>
+        <div className={"flex flex-col gap-y-2"}>
           <div className={"flex items-center gap-x-2"}>
             <input
               type="checkbox"
@@ -93,9 +93,9 @@ export const SidebarSearch = ({ className }) => {
         </div>
       </div>
 
-      <div class={"flex flex-col gap-y-4"}>
-        <span class={"font-semi-bold text-base"}>Trips</span>
-        <div class={"flex flex-col gap-y-2"}>
+      <div className={"flex flex-col gap-y-4"}>
+        <span className={"font-semi-bold text-base"}>Trips</span>
+        <div className={"flex flex-col gap-y-2"}>
           <div className={"flex items-center gap-x-2"}>
             <input
               type="checkbox"
