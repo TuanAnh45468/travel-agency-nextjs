@@ -2,14 +2,16 @@ import Link from "next/link";
 
 export const AccessDenied = () => {
   return (
-    <div class={"w-full min-h-screen flex items-center justify-center"}>
-      <div class="artboard artboard-horizontal phone-1 flex flex-col justify-center items-center gap-y-6">
+    <div className={"w-full min-h-screen flex items-center justify-center"}>
+      <div className="artboard artboard-horizontal phone-1 flex flex-col justify-center items-center gap-y-6">
         {" "}
         <div>
-          <h1 class={"text-6xl text-center font-bold text-blackish-green"}>
+          <h1 className={"text-6xl text-center font-bold text-blackish-green"}>
             Access Denied
           </h1>
-          <p class={"text-center"}>You must be signed in to view this page</p>
+          <p className={"text-center"}>
+            You must be signed in to view this page
+          </p>
         </div>
         <Link
           href={"/login"}
