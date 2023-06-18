@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getAirlineById, getFlightById } from "@lib/api";
 import Link from "next/link";
 import Image from "next/image";
+import { FlightDetailCard } from "@/app/components/FlightDetailCard";
 
 export default function Page({ params }) {
   const [flight, setFlight] = useState({});
@@ -88,7 +89,7 @@ export default function Page({ params }) {
               className={
                 "w-[150px] h-[48px] font-semi-bold hover:bg-dark-mint-green hover:text-white bg-mint-green flex items-center justify-center"
               }
-              href={"#"}
+              href={`/list-flights/booking/${flight.id}`}
             >
               Book now
             </Link>
@@ -216,80 +217,7 @@ export default function Page({ params }) {
       </div>
 
       <div className={"mt-[40px] flex flex-col"}>
-        <div className={"flex"}>
-          <p>
-            <span className={"font-bold text-2xl"}>{airline.name}</span>
-            <br />
-            <span className={"text-gray"}>Airbus A320</span>{" "}
-          </p>
-          <div className={"flex gap-x-[48px] ml-auto"}>
-            <Image
-              src={"/images/icons/airplane.svg"}
-              alt={""}
-              width={24}
-              height={24}
-            ></Image>
-            <Image
-              src={"/images/icons/fast-food.svg"}
-              alt={""}
-              width={24}
-              height={24}
-            ></Image>
-            <Image
-              src={"/images/icons/wifi.svg"}
-              alt={""}
-              width={24}
-              height={24}
-            ></Image>
-            <Image
-              src={"/images/icons/watch.svg"}
-              alt={""}
-              width={24}
-              height={24}
-            ></Image>
-            <Image
-              src={"/images/icons/airline-seat.svg"}
-              alt={""}
-              width={24}
-              height={24}
-            ></Image>
-          </div>
-        </div>
-
-        <div className={"flex items-center gap-x-[80px] self-center mt-[40px]"}>
-          <div className={"flex gap-x-4 items-center"}>
-            <span className={"font-semi-bold text-2xl"}>
-              {formatTime(flight.departureTime)}
-            </span>
-            <span className={"text-gray"}>({flight.originCode})</span>
-          </div>
-          <div className={"flex items-center gap-x-6"}>
-            <Image
-              src={"/images/icons/line-left.svg"}
-              alt={""}
-              width={36}
-              height={0}
-            ></Image>
-            <Image
-              src={"/images/icons/airplane.svg"}
-              alt={""}
-              width={48}
-              height={48}
-            ></Image>
-            <Image
-              src={"/images/icons/line-right.svg"}
-              alt={""}
-              width={36}
-              height={0}
-            ></Image>
-          </div>
-          <div className={"flex gap-x-4 items-center"}>
-            <span className={"font-semi-bold text-2xl"}>
-              {formatTime(flight.arrivalTime)}
-            </span>
-            <span className={"text-gray"}>({flight.destinationCode})</span>
-          </div>
-        </div>
+        <FlightDetailCard flight={flight} airline={airline}></FlightDetailCard>
       </div>
     </div>
   );
